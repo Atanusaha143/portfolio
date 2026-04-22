@@ -4,6 +4,7 @@ import Nav from '@/components/Nav'
 import About from '@/components/About'
 import Resume from '@/components/Resume'
 import Achievements from '@/components/Achievements'
+import Publications from '@/components/Publications'
 import Placeholder from '@/components/Placeholder'
 import { Card } from '@/components/ui/card'
 import { Tabs, TabsContent } from '@/components/ui/tabs'
@@ -57,6 +58,8 @@ export default function App() {
                   <Resume activeSection={resumeSub} />
                 ) : name === 'Achievements' ? (
                   <Achievements activeSection={achievementSub} />
+                ) : name === 'Publications' ? (
+                  <Publications />
                 ) : (
                   <Placeholder title={name} />
                 )}
