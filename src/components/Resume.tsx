@@ -1,4 +1,4 @@
-import type { ComponentType, SVGProps } from 'react'
+import type { ComponentType, ReactNode, SVGProps } from 'react'
 import { IoLocationOutline } from 'react-icons/io5'
 import {
   experienceCategories,
@@ -6,7 +6,7 @@ import {
   type ResumeSectionKey,
 } from '@/data/resume'
 import { education, type EducationEntry } from '@/data/education'
-import { skills, type SkillCategory } from '@/data/skills'
+import { skills, type Proficiency, type SkillCategory } from '@/data/skills'
 import { Card } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
 import { cn } from '@/lib/utils'
@@ -27,7 +27,7 @@ function SectionHeader({
 }) {
   return (
     <div className="mb-5 flex flex-wrap items-baseline justify-between gap-2 border-b border-[color:var(--color-border)] pb-3">
-      <h2 className="text-2xl font-extrabold tracking-tight text-white lg:text-3xl">
+      <h2 className="section-heading text-2xl lg:text-3xl">
         {title}
       </h2>
       {meta && (
@@ -61,7 +61,7 @@ function CategoryLabel({
   )
 }
 
-function BulletList({ items }: { items: string[] }) {
+function BulletList({ items }: { items: ReactNode[] }) {
   return (
     <ul className="space-y-1.5">
       {items.map((b, i) => (
@@ -69,12 +69,16 @@ function BulletList({ items }: { items: string[] }) {
           key={i}
           className="flex items-start gap-2 text-[13.5px] leading-[1.65] text-zinc-200"
         >
-          <span
+          <svg
             aria-hidden="true"
-            className="mt-[7px] shrink-0 text-[8px] leading-none text-[color:var(--color-accent)]"
+            width="5"
+            height="5"
+            viewBox="0 0 5 5"
+            className="mt-[7px] shrink-0 text-[color:var(--color-accent)]"
+            fill="currentColor"
           >
-            ▸
-          </span>
+            <circle cx="2.5" cy="2.5" r="2.5" />
+          </svg>
           <span>{b}</span>
         </li>
       ))}
@@ -116,8 +120,8 @@ function ExperienceEntryCard({ entry }: { entry: ExperienceEntry }) {
             {entry.company}
             {entry.context && (
               <>
-                <span className="text-zinc-500"> · </span>
-                <span className="italic text-zinc-400">{entry.context}</span>
+                <span className="hidden text-zinc-500 sm:inline"> · </span>
+                <span className="block italic text-zinc-400 sm:inline">{entry.context}</span>
               </>
             )}
           </p>
@@ -198,8 +202,8 @@ function EducationEntryCard({ entry }: { entry: EducationEntry }) {
             </span>
             {entry.major && (
               <>
-                <span className="text-zinc-500"> · </span>
-                <span className="text-zinc-400">Major: {entry.major}</span>
+                <span className="hidden text-zinc-500 sm:inline"> · </span>
+                <span className="block text-zinc-400 sm:inline">Major: {entry.major}</span>
               </>
             )}
           </p>
@@ -302,14 +306,29 @@ function EducationSection() {
 
 const FEATURED_SKILL_KEYS = new Set(['languages', 'llms'])
 
-function SkillCategoryCard({
-  category,
-  featured = false,
-}: {
-  category: SkillCategory
-  featured?: boolean
-}) {
+const PROFICIENCY_META: Record<
+  Proficiency,
+  { label: string; labelColor: string }
+> = {
+  core: {
+    label: 'Core expertise',
+    labelColor: 'text-[color:var(--color-accent)]',
+  },
+  moderate: {
+    label: 'Moderate expertise',
+    labelColor: 'text-zinc-400',
+  },
+  'semi-moderate': {
+    label: 'Semi-moderate expertise',
+    labelColor: 'text-zinc-500',
+  },
+}
+
+function SkillCategoryCard({ category }: { category: SkillCategory }) {
   const Icon = category.icon
+  const featured = FEATURED_SKILL_KEYS.has(category.key)
+  const { label: profLabel, labelColor } = PROFICIENCY_META[category.proficiency]
+
   return (
     <Card
       className={cn(
@@ -356,11 +375,9 @@ function SkillCategoryCard({
             >
               {category.label}
             </h4>
-            {featured && (
-              <p className="mt-0.5 text-[11px] font-medium text-zinc-500">
-                Core expertise
-              </p>
-            )}
+            <p className={cn('mt-0.5 text-[11px] font-medium', labelColor)}>
+              {profLabel}
+            </p>
           </div>
         </div>
 
@@ -386,11 +403,7 @@ function SkillsSection() {
 
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
         {skills.map((category) => (
-          <SkillCategoryCard
-            key={category.key}
-            category={category}
-            featured={FEATURED_SKILL_KEYS.has(category.key)}
-          />
+          <SkillCategoryCard key={category.key} category={category} />
         ))}
       </div>
     </section>

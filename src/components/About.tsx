@@ -65,9 +65,9 @@ function HighlightBio({ text }: { text: string }) {
 
 const focusAreas = [
   { icon: IoCodeSlashOutline, label: 'Backend Engineering' },
-  { icon: IoTerminalOutline, label: 'GenAI & RAG' },
   { icon: IoCloudOutline, label: 'Cloud Infra' },
   { icon: IoGlobeOutline, label: 'Distributed Systems' },
+  { icon: IoTerminalOutline, label: 'GenAI' },
   { icon: IoTrophyOutline, label: 'Problem Solving' },
 ]
 
@@ -76,7 +76,7 @@ const focusAreas = [
 const stats = [
   { value: '2.5+', label: 'Years of\nExperience', icon: IoBriefcaseOutline },
   { value: '5+', label: 'Projects\nShipped', icon: IoRocketOutline },
-  { value: '6+', label: 'Awards &\nHonors', icon: IoTrophyOutline },
+  { value: '10+', label: 'Awards &\nHonors', icon: IoTrophyOutline },
   { value: '1', label: 'ACM\nPublication', icon: IoLibraryOutline },
 ]
 
@@ -86,7 +86,7 @@ export default function About() {
   return (
     <section className="flex flex-col gap-6">
       <header>
-        <h2 className="text-2xl font-extrabold tracking-tight text-white lg:text-3xl">
+        <h2 className="section-heading text-2xl lg:text-3xl">
           Digital Identity
         </h2>
         <span className="mt-3 inline-block h-1 w-[70px] rounded-full bg-[color:var(--color-accent)]" />
@@ -100,7 +100,7 @@ export default function About() {
       </div>
 
       {/* Focus chips */}
-      <div className="hidden flex-wrap gap-2 sm:flex">
+      <div className="hidden flex-wrap justify-center gap-2 sm:flex">
         {focusAreas.map(({ icon: Icon, label }) => (
           <span
             key={label}

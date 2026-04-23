@@ -100,7 +100,7 @@ const A = ({
 const teaching: ExperienceEntry[] = [
   {
     title: 'Programming Instructor & Contest Judge',
-    company: 'American International University-Bangladesh (AIUB)',
+    company: 'American International University-Bangladesh',
     bullets: [
       'Led specialized technical training programs in C, C++, Data Structures, and Algorithms, mentoring 100+ students.',
       'Coordinated training sessions, designed practice contests, and analyzed performance to foster competitive programming skills and critical thinking.',
@@ -125,7 +125,7 @@ const teaching: ExperienceEntry[] = [
   },
   {
     title: 'Teaching Assistant',
-    company: 'American International University-Bangladesh (AIUB)',
+    company: 'American International University-Bangladesh',
     bullets: [
       'Mentored undergraduates in Object Oriented Programming II (C#) by conducting lab sessions and tutorials, guiding them through core object-oriented concepts and software design principles, and assisting with debugging, programming assignments, and project development.',
       'Assisted the course instructor by preparing lab materials and programming exercises, supporting assignment design, evaluating programming assignments and exams, and providing feedback on code correctness, structure, and software design practices.',

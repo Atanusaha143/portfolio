@@ -12,7 +12,7 @@ import { projects, type Project } from '@/data/projects'
 function SectionHeader({ count }: { count: number }) {
   return (
     <div className="mb-6 flex flex-wrap items-baseline justify-between gap-2 border-b border-[color:var(--color-border)] pb-3">
-      <h2 className="text-2xl font-extrabold tracking-tight text-white lg:text-3xl">
+      <h2 className="section-heading text-2xl lg:text-3xl">
         Projects
       </h2>
       <span className="font-mono text-[10.5px] font-medium uppercase tracking-[0.18em] text-zinc-500">

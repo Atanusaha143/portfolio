@@ -114,15 +114,15 @@ export default function Sidebar() {
   const [expanded, setExpanded] = useState(false)
 
   return (
-    <Card className="relative flex flex-col p-4 lg:h-[calc(100vh-3rem)] lg:p-6">
+    <Card className="relative flex flex-col p-6 lg:h-[calc(100vh-3rem)] lg:p-6">
       {/* ==================== DESKTOP LAYOUT ==================== */}
       <div className="mx-auto hidden w-full max-w-[300px] flex-1 flex-col lg:flex">
-        <div className="mx-auto overflow-hidden rounded-2xl border border-[color:var(--color-border)]">
+        <div className="group mx-auto overflow-hidden rounded-2xl border border-[color:var(--color-border)]">
           <img
             src={profile.avatar}
             alt={profile.name}
             loading="lazy"
-            className="block h-[clamp(200px,34vh,290px)] w-[clamp(200px,34vh,290px)] object-cover object-[center_30%]"
+            className="block h-[clamp(200px,34vh,290px)] w-[clamp(200px,34vh,290px)] object-cover object-[center_30%] transition-transform duration-500 ease-out group-hover:scale-105"
           />
         </div>
 
@@ -183,12 +183,12 @@ export default function Sidebar() {
       <div className="lg:hidden">
         <div className="flex items-center gap-4 pr-8">
           {/* Avatar (left) */}
-          <div className="shrink-0 overflow-hidden rounded-xl border border-[color:var(--color-border)]">
+          <div className="group shrink-0 overflow-hidden rounded-xl border border-[color:var(--color-border)]">
             <img
               src={profile.avatar}
               alt={profile.name}
               loading="lazy"
-              className="block h-24 w-24 object-cover object-[center_30%]"
+              className="block h-24 w-24 object-cover object-[center_30%] transition-transform duration-500 ease-out group-hover:scale-110"
             />
           </div>
 
@@ -216,7 +216,7 @@ export default function Sidebar() {
             <Separator className="mb-4" />
             <InfoList />
             <div className="mt-5 border-t border-[color:var(--color-border)] pt-5">
-              <SocialList size={18} gap="gap-4" />
+              <SocialList size={18} gap="gap-7" />
             </div>
           </div>
         </div>

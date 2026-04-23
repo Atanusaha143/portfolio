@@ -74,6 +74,14 @@ body {
   border-radius: 999px;
 }
 
+.section-heading {
+  font-family: var(--font-script);
+  font-style: italic;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+}
+
 .nav-link {
   color: #e5e7eb;
   font-weight: 500;

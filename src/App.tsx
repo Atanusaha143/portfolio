@@ -5,6 +5,7 @@ import About from '@/components/About'
 import Resume from '@/components/Resume'
 import Achievements from '@/components/Achievements'
 import Publications from '@/components/Publications'
+import Projects from '@/components/Projects'
 import Placeholder from '@/components/Placeholder'
 import { Card } from '@/components/ui/card'
 import { Tabs, TabsContent } from '@/components/ui/tabs'
@@ -40,8 +41,8 @@ export default function App() {
           <Sidebar />
         </div>
 
-        <Card className="relative overflow-hidden p-6 lg:p-10">
-          <div className="fixed inset-x-0 bottom-0 z-50 lg:absolute lg:inset-x-auto lg:bottom-auto lg:right-0 lg:top-0 lg:z-10">
+        <Card className="relative overflow-hidden p-6 lg:flex lg:h-[calc(100vh-3rem)] lg:flex-col lg:p-0">
+          <div className="fixed inset-x-0 bottom-0 z-50 lg:static lg:flex lg:shrink-0 lg:justify-end">
             <Nav
               currentSection={section}
               onResumeSubChange={handleResumeSubChange}
@@ -49,22 +50,26 @@ export default function App() {
             />
           </div>
 
-          <div className="lg:pt-14">
-            {NAV_ITEMS.map(({ name }) => (
-              <TabsContent key={name} value={name}>
-                {name === 'About' ? (
-                  <About />
-                ) : name === 'Resume' ? (
-                  <Resume activeSection={resumeSub} />
-                ) : name === 'Achievements' ? (
-                  <Achievements activeSection={achievementSub} />
-                ) : name === 'Publications' ? (
-                  <Publications />
-                ) : (
-                  <Placeholder title={name} />
-                )}
-              </TabsContent>
-            ))}
+          <div className="lg:flex-1 lg:overflow-y-auto">
+            <div className="lg:p-10">
+              {NAV_ITEMS.map(({ name }) => (
+                <TabsContent key={name} value={name}>
+                  {name === 'About' ? (
+                    <About />
+                  ) : name === 'Resume' ? (
+                    <Resume activeSection={resumeSub} />
+                  ) : name === 'Achievements' ? (
+                    <Achievements activeSection={achievementSub} />
+                  ) : name === 'Publications' ? (
+                    <Publications />
+                  ) : name === 'Projects' ? (
+                    <Projects />
+                  ) : (
+                    <Placeholder title={name} />
+                  )}
+                </TabsContent>
+              ))}
+            </div>
           </div>
         </Card>
       </Tabs>

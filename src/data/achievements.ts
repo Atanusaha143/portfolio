@@ -46,7 +46,7 @@ export const academicHonors: AchievementEntry[] = [
     title: 'Summa Cum Laude - Gold Medal',
     date: '22nd Convocation · 2025',
     description:
-      'Graduated with a CGPA of 3.98, earning the highest academic honor at the 22nd Convocation of AIUB — awarded only to top performing graduates at AIUB while maintaining a spotless academic record with zero retakes, withdrawals, or disciplinary actions across the entire degree.',
+      'Graduated with a CGPA of 3.98, earning the highest academic honor at the 22nd Convocation of American International University-Bangladesh - awarded only to top performing graduates while maintaining a spotless academic record with zero retakes, withdrawals, or disciplinary actions across the entire degree.',
     badge: 'Highest Honor',
     featured: true,
   },
@@ -55,7 +55,7 @@ export const academicHonors: AchievementEntry[] = [
     title: 'Dr. Anwarul Abedin Leadership Award',
     date: '22nd Convocation · 2025',
     description:
-      'Recognized at the 22nd Convocation of AIUB for exceptional contributions to the competitive programming culture and community on campus.',
+      'Recognized at the 22nd Convocation of American International University-Bangladesh for exceptional contributions to the competitive programming culture and community on campus.',
     badge: 'Leadership Award',
   },
   {
@@ -63,7 +63,7 @@ export const academicHonors: AchievementEntry[] = [
     title: 'Merit-Based Academic Scholarship',
     date: '2019 — 2021',
     description:
-      '≈70% tuition scholarship awarded from the 4th semester through the final semester at AIUB for sustained outstanding academic performance.',
+      '~70% tuition scholarship awarded from the 4th semester through the final semester at American International University-Bangladesh for sustained outstanding academic performance.',
     badge: 'Scholarship',
   },
   {

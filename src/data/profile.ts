@@ -59,7 +59,7 @@ export const profile: Profile = {
   bio: [
     'Backend-focused Software Engineer at Cefalo Bangladesh Ltd. with 2.5+ years of experience. I specialize in Python microservices (FastAPI, FastStream), event-driven architecture over NATS, and cloud infrastructure on GCP & AWS - with a growing focus on GenAI, RAG pipelines, and LLM-powered systems.',
     'BSc in CSE from AIUB with a strong academic record, published researcher on Google Scholar & ResearchGate, and a competitive programming instructor and contest judge.',
-    'Former ICPC contestant, competitive programming mentor to 100+ students. I build for performance and clarity, and I care deeply about the craft.',
+    'Former ICPC contestant, competitive programming mentor to 100+ students. I enjoy digging into system bottlenecks, reading about distributed systems, and translating research ideas into working code.',
   ],
   portfolios: [
     {
@@ -111,7 +111,7 @@ export const profile: Profile = {
     {
       name: 'Resume',
       label: 'Resume',
-      href: '#',
+      href: '/Atanu_Saha.pdf',
       icon: BsPersonVcardFill,
     },
   ],

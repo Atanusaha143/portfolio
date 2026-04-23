@@ -11,7 +11,7 @@ function SectionHeader({
 }) {
   return (
     <div className="mb-5 flex flex-wrap items-baseline justify-between gap-2 border-b border-[color:var(--color-border)] pb-3">
-      <h2 className="text-2xl font-extrabold tracking-tight text-white lg:text-3xl">
+      <h2 className="section-heading text-2xl lg:text-3xl">
         {title}
       </h2>
       {meta && (
@@ -66,10 +66,16 @@ function PublicationCard({ pub }: { pub: Publication }) {
         <ul className="flex flex-col gap-2 pl-0.5 sm:gap-2.5 sm:pl-1">
           {pub.highlights.map((point, i) => (
             <li key={i} className="flex items-start gap-2.5 sm:gap-3">
-              <span
+              <svg
                 aria-hidden="true"
-                className="mt-[5px] h-0 w-0 shrink-0 border-y-[4px] border-l-[7px] border-y-transparent border-l-[color:var(--color-accent)]/70"
-              />
+                width="5"
+                height="5"
+                viewBox="0 0 5 5"
+                className="mt-[7px] shrink-0 text-[color:var(--color-accent)]"
+                fill="currentColor"
+              >
+                <circle cx="2.5" cy="2.5" r="2.5" />
+              </svg>
               <span className="text-[13px] leading-[1.65] text-zinc-300 sm:text-[13.5px] sm:leading-[1.7]">
                 {point}
               </span>
@@ -92,8 +98,8 @@ function PublicationCard({ pub }: { pub: Publication }) {
           className="inline-flex w-fit items-center gap-1.5 text-[13px] font-semibold text-[color:var(--color-accent)] transition-opacity duration-200 hover:opacity-70 sm:text-[13.5px]"
         >
           <IoOpenOutline className="h-4 w-4 shrink-0" aria-hidden="true" />
-          <span className="sm:hidden">View Paper</span>
-          <span className="hidden sm:inline">View on ACM Digital Library</span>
+          <span className="sm:hidden">Read Paper</span>
+          <span className="hidden sm:inline">Read Paper</span>
         </a>
       </div>
     </Card>

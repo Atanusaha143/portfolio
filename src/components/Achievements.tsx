@@ -15,7 +15,7 @@ function SectionHeader({
 }) {
   return (
     <div className="mb-5 flex flex-wrap items-baseline justify-between gap-2 border-b border-[color:var(--color-border)] pb-3">
-      <h2 className="text-2xl font-extrabold tracking-tight text-white lg:text-3xl">
+      <h2 className="section-heading text-2xl lg:text-3xl">
         {title}
       </h2>
       {meta && (

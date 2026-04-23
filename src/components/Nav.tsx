@@ -22,7 +22,7 @@ type NavProps = {
 }
 
 const TRIGGER_CLASSES =
-  'group relative flex flex-1 cursor-pointer flex-col items-center justify-center gap-1 rounded-xl px-1 py-1.5 text-[10px] font-medium text-zinc-400 transition-all duration-200 ease-out hover:bg-white/5 hover:text-zinc-100 focus-visible:ring-2 focus-visible:ring-[color:var(--color-accent)]/50 focus-visible:ring-offset-0 data-[state=active]:bg-[color:var(--color-accent)]/12 data-[state=active]:text-[color:var(--color-accent)] data-[state=active]:shadow-[0_0_0_1px_color-mix(in_oklab,var(--color-accent)_35%,transparent),0_4px_14px_-4px_color-mix(in_oklab,var(--color-accent)_35%,transparent)] lg:flex-initial lg:flex-row lg:gap-1.5 lg:rounded-full lg:px-2.5 lg:py-1.5 lg:text-[12px] xl:px-3 xl:text-[13px]'
+  'group relative flex flex-1 cursor-pointer flex-col items-center justify-center gap-1 rounded-none px-1 py-1.5 text-[10px] font-medium text-zinc-400 transition-all duration-200 ease-out hover:bg-white/5 hover:text-zinc-100 focus-visible:ring-2 focus-visible:ring-[color:var(--color-accent)]/50 focus-visible:ring-offset-0 data-[state=active]:text-[color:var(--color-accent)] data-[state=active]:[filter:drop-shadow(0_0_8px_color-mix(in_oklab,var(--color-accent)_70%,transparent))] lg:flex-initial lg:flex-row lg:gap-1.5 lg:rounded-full lg:px-2.5 lg:py-1.5 lg:text-[12px] xl:px-3 xl:text-[13px]'
 
 type DropdownItem<K extends string> = {
   key: K
@@ -76,7 +76,7 @@ function NavDropdownTrigger<K extends string>({
   }, [isActive])
 
   return (
-    <div ref={wrapperRef} className="relative flex flex-1 lg:flex-initial">
+    <div ref={wrapperRef} className="relative flex flex-1 lg:flex-initial lg:rounded-full">
       <button
         type="button"
         data-state={isActive ? 'active' : 'inactive'}
@@ -144,10 +144,10 @@ export default function Nav({
     <TabsList
       aria-label="Primary"
       className="
-        flex w-full items-stretch justify-around
+        flex w-full items-stretch justify-around gap-0
         rounded-tl-2xl rounded-tr-2xl rounded-bl-none rounded-br-none
         border-t border-white/10
-        px-2 pt-2 pb-[max(0.5rem,env(safe-area-inset-bottom))]
+        px-0 pt-1.5 pb-[max(0.5rem,env(safe-area-inset-bottom))]
         shadow-[0_-10px_28px_-14px_rgba(0,0,0,0.55),inset_0_1px_0_rgba(255,255,255,0.04)]
         backdrop-blur-xl
 

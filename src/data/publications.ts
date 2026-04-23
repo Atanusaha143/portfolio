@@ -11,7 +11,7 @@ export type Publication = {
 export const publications: Publication[] = [
   {
     title: 'A Comparative Analysis on Fake News Detection Methods',
-    conference: "International Conference on Computing Advancements (ICCA '22)",
+    conference: "International Conference on Computing Advancements (ICCA)",
     venue: 'ACM Digital Library',
     date: 'March 2022',
     highlights: [
