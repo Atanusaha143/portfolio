@@ -25,11 +25,6 @@ body {
   background-color: var(--color-bg);
   background-image:
     radial-gradient(
-      ellipse 65% 50% at 20% -10%,
-      color-mix(in oklab, var(--color-accent) 16%, transparent),
-      transparent 60%
-    ),
-    radial-gradient(
       ellipse 55% 45% at 90% 110%,
       rgba(155, 100, 220, 0.09),
       transparent 55%
