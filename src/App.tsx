@@ -13,11 +13,8 @@ import { NAV_ITEMS, type NavSection } from '@/data/profile'
 import type { ResumeSectionKey } from '@/data/resume'
 import type { AchievementSectionKey } from '@/data/achievements'
 
-const VALID_SECTIONS = NAV_ITEMS.map((i) => i.name) as string[]
-
 function getInitialSection(): NavSection {
-  const hash = window.location.hash.slice(1)
-  return VALID_SECTIONS.includes(hash) ? (hash as NavSection) : 'About'
+  return 'About'
 }
 
 export default function App() {
@@ -27,11 +24,12 @@ export default function App() {
     useState<AchievementSectionKey>('academic-honor')
   const scrollRef = useRef<HTMLDivElement>(null)
 
-  // Sync section → URL hash and document title
   useEffect(() => {
-    history.replaceState(null, '', `#${section}`)
     document.title = 'Atanu Saha'
-  }, [section])
+    if (window.location.hash) {
+      history.replaceState(null, '', window.location.pathname)
+    }
+  }, [])
 
   // Reset scroll position when switching sections
   useEffect(() => {
