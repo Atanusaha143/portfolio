@@ -111,7 +111,7 @@ export const profile: Profile = {
     {
       name: 'Resume',
       label: 'Resume',
-      href: '/Atanu_Saha.pdf',
+      href: `${import.meta.env.BASE_URL}Atanu_Saha.pdf`,
       icon: BsPersonVcardFill,
     },
   ],
