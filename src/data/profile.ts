@@ -22,13 +22,6 @@ export type Social = {
   label: string
 }
 
-export type Portfolio = {
-  title: string
-  subtitle: string
-  cover: string
-  tint: string
-}
-
 export type Profile = {
   name: string
   role: string
@@ -38,7 +31,6 @@ export type Profile = {
   company: { name: string; href: string }
   avatar: string
   bio: string[]
-  portfolios: Portfolio[]
   socials: Social[]
 }
 
@@ -60,22 +52,6 @@ export const profile: Profile = {
     'Backend-focused Software Engineer at Cefalo Bangladesh Ltd. with 2.5+ years of experience. I specialize in Python microservices (FastAPI, FastStream), event-driven architecture over NATS, and cloud infrastructure on GCP & AWS - with a growing focus on GenAI, RAG pipelines, and LLM-powered systems.',
     'BSc in CSE from AIUB with a strong academic record, published researcher on Google Scholar & ResearchGate, and a competitive programming instructor and contest judge.',
     'Former ICPC contestant, competitive programming mentor to 100+ students. I enjoy digging into system bottlenecks, reading about distributed systems, and translating research ideas into working code.',
-  ],
-  portfolios: [
-    {
-      title: 'Digital Identity',
-      subtitle: 'Personal portfolio site',
-      cover:
-        'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200&q=80&auto=format&fit=crop',
-      tint: 'from-slate-700 to-slate-900',
-    },
-    {
-      title: 'Terminal Portfolio',
-      subtitle: 'Interactive terminal-style site',
-      cover:
-        'https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=1200&q=80&auto=format&fit=crop',
-      tint: 'from-rose-900 to-orange-700',
-    },
   ],
   socials: [
     {

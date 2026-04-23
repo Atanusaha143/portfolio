@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Sidebar from '@/components/Sidebar'
 import Nav from '@/components/Nav'
 import About from '@/components/About'
@@ -13,12 +13,31 @@ import { NAV_ITEMS, type NavSection } from '@/data/profile'
 import type { ResumeSectionKey } from '@/data/resume'
 import type { AchievementSectionKey } from '@/data/achievements'
 
+const VALID_SECTIONS = NAV_ITEMS.map((i) => i.name) as string[]
+
+function getInitialSection(): NavSection {
+  const hash = window.location.hash.slice(1)
+  return VALID_SECTIONS.includes(hash) ? (hash as NavSection) : 'About'
+}
+
 export default function App() {
-  const [section, setSection] = useState<NavSection>('About')
-  const [resumeSub, setResumeSub] =
-    useState<ResumeSectionKey>('experience')
+  const [section, setSection] = useState<NavSection>(getInitialSection)
+  const [resumeSub, setResumeSub] = useState<ResumeSectionKey>('experience')
   const [achievementSub, setAchievementSub] =
     useState<AchievementSectionKey>('academic-honor')
+  const scrollRef = useRef<HTMLDivElement>(null)
+
+  // Sync section → URL hash and document title
+  useEffect(() => {
+    history.replaceState(null, '', `#${section}`)
+    document.title = 'Atanu Saha'
+  }, [section])
+
+  // Reset scroll position when switching sections
+  useEffect(() => {
+    scrollRef.current?.scrollTo({ top: 0 })
+    window.scrollTo({ top: 0 })
+  }, [section])
 
   const handleResumeSubChange = (sub: ResumeSectionKey) => {
     setSection('Resume')
@@ -32,6 +51,14 @@ export default function App() {
 
   return (
     <div className="mx-auto min-h-screen max-w-[1300px] px-4 py-4 pb-[calc(72px+env(safe-area-inset-bottom))] sm:py-6 sm:pb-[calc(80px+env(safe-area-inset-bottom))] lg:px-6 lg:py-6 lg:pb-6 xl:px-8">
+      {/* Skip-to-content for keyboard users */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-[color:var(--color-accent)] focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-[color:var(--color-bg)] focus:outline-none"
+      >
+        Skip to content
+      </a>
+
       <Tabs
         value={section}
         onValueChange={(v) => setSection(v as NavSection)}
@@ -50,8 +77,8 @@ export default function App() {
             />
           </div>
 
-          <div className="lg:flex-1 lg:overflow-y-auto">
-            <div className="lg:p-10">
+          <div ref={scrollRef} className="lg:flex-1 lg:overflow-y-auto">
+            <main id="main-content" className="lg:p-10">
               {NAV_ITEMS.map(({ name }) => (
                 <TabsContent key={name} value={name}>
                   {name === 'About' ? (
@@ -69,7 +96,7 @@ export default function App() {
                   )}
                 </TabsContent>
               ))}
-            </div>
+            </main>
           </div>
         </Card>
       </Tabs>

@@ -174,8 +174,8 @@ function ExperienceSection() {
                 count={cat.entries.length}
               />
               <div className="flex flex-col gap-3">
-                {cat.entries.map((entry, i) => (
-                  <ExperienceEntryCard key={i} entry={entry} />
+                {cat.entries.map((entry) => (
+                  <ExperienceEntryCard key={`${entry.title}-${entry.company}`} entry={entry} />
                 ))}
               </div>
             </div>
@@ -293,8 +293,8 @@ function EducationSection() {
         </EmptySectionNotice>
       ) : (
         <div className="flex flex-col gap-3">
-          {education.map((entry, i) => (
-            <EducationEntryCard key={i} entry={entry} />
+          {education.map((entry) => (
+            <EducationEntryCard key={entry.institution} entry={entry} />
           ))}
         </div>
       )}
@@ -340,7 +340,7 @@ function SkillCategoryCard({ category }: { category: SkillCategory }) {
         featured
           ? {
               backgroundImage:
-                'linear-gradient(135deg, color-mix(in_oklab, var(--color-accent) 6%, transparent) 0%, transparent 55%)',
+                'linear-gradient(135deg, color-mix(in oklab, var(--color-accent) 6%, transparent) 0%, transparent 55%)',
             }
           : undefined
       }
@@ -356,7 +356,7 @@ function SkillCategoryCard({ category }: { category: SkillCategory }) {
             )}
             style={{
               backgroundImage: featured
-                ? 'linear-gradient(135deg, color-mix(in_oklab, var(--color-accent) 18%, transparent) 0%, transparent 65%)'
+                ? 'linear-gradient(135deg, color-mix(in oklab, var(--color-accent) 18%, transparent) 0%, transparent 65%)'
                 : 'linear-gradient(180deg, rgba(255,255,255,0.05), transparent 60%)',
               backgroundColor: 'var(--color-panel-2)',
             }}

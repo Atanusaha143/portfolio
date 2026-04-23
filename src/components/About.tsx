@@ -1,16 +1,6 @@
 import { profile } from '@/data/profile'
+import { focusAreas, stats } from '@/data/about'
 import { Card } from '@/components/ui/card'
-import {
-  IoBriefcaseOutline,
-  IoRocketOutline,
-  IoTrophyOutline,
-  IoLibraryOutline,
-  IoCloudOutline,
-  IoCodeSlashOutline,
-  IoGlobeOutline,
-  IoTerminalOutline,
-} from 'react-icons/io5'
-
 
 // ── Bio keyword highlights ────────────────────────────────────────────────────
 
@@ -61,25 +51,6 @@ function HighlightBio({ text }: { text: string }) {
   )
 }
 
-// ── Focus chips ───────────────────────────────────────────────────────────────
-
-const focusAreas = [
-  { icon: IoCodeSlashOutline, label: 'Backend Engineering' },
-  { icon: IoCloudOutline, label: 'Cloud Infra' },
-  { icon: IoGlobeOutline, label: 'Distributed Systems' },
-  { icon: IoTerminalOutline, label: 'GenAI' },
-  { icon: IoTrophyOutline, label: 'Problem Solving' },
-]
-
-// ── Stat cards ────────────────────────────────────────────────────────────────
-
-const stats = [
-  { value: '2.5+', label: 'Years of\nExperience', icon: IoBriefcaseOutline },
-  { value: '5+', label: 'Projects\nShipped', icon: IoRocketOutline },
-  { value: '10+', label: 'Awards &\nHonors', icon: IoTrophyOutline },
-  { value: '1', label: 'ACM\nPublication', icon: IoLibraryOutline },
-]
-
 // ── Component ─────────────────────────────────────────────────────────────────
 
 export default function About() {
@@ -94,23 +65,28 @@ export default function About() {
 
       {/* Bio */}
       <div className="space-y-4 text-center text-[15px] leading-[1.75] text-zinc-200">
-        {profile.bio.map((paragraph, i) => (
-          <HighlightBio key={i} text={paragraph} />
+        {profile.bio.map((paragraph) => (
+          <HighlightBio key={paragraph.slice(0, 40)} text={paragraph} />
         ))}
       </div>
 
       {/* Focus chips */}
-      <div className="hidden flex-wrap justify-center gap-2 sm:flex">
+      <ul
+        role="list"
+        aria-label="Areas of focus"
+        className="hidden flex-wrap justify-center gap-2 sm:flex"
+      >
         {focusAreas.map(({ icon: Icon, label }) => (
-          <span
+          <li
             key={label}
+            role="listitem"
             className="inline-flex items-center gap-1.5 rounded-full border border-[color:var(--color-border)] bg-[color:var(--color-panel-2)] px-3 py-1.5 text-[12px] font-medium text-zinc-300 transition-all duration-300 ease-out hover:border-[color:var(--color-accent)]/40 hover:bg-[color-mix(in_oklab,var(--color-accent)_8%,transparent)] hover:text-white hover:shadow-[0_0_16px_-4px_color-mix(in_oklab,var(--color-accent)_40%,transparent)]"
           >
-            <Icon className="h-3.5 w-3.5 text-[color:var(--color-accent)]" />
+            <Icon className="h-3.5 w-3.5 text-[color:var(--color-accent)]" aria-hidden="true" />
             {label}
-          </span>
+          </li>
         ))}
-      </div>
+      </ul>
 
       {/* Divider */}
       <div className="border-t border-[color:var(--color-border)]" />
@@ -123,7 +99,7 @@ export default function About() {
             className="flex flex-col items-center justify-center gap-2 overflow-hidden px-3 py-5 text-center transition-all duration-300 ease-out hover:border-[color:var(--color-accent)]/40 hover:shadow-[0_0_32px_-6px_color-mix(in_oklab,var(--color-accent)_22%,transparent)]"
           >
             <div className="flex h-8 w-8 items-center justify-center rounded-lg border border-[color:var(--color-border)] bg-zinc-800/60">
-              <Icon className="h-4 w-4 text-[color:var(--color-accent)]" />
+              <Icon className="h-4 w-4 text-[color:var(--color-accent)]" aria-hidden="true" />
             </div>
             <span className="bg-gradient-to-br from-[color:var(--color-accent)] to-[#2193b0] bg-clip-text text-3xl font-extrabold tracking-tight text-transparent">
               {value}
