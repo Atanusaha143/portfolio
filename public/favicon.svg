@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1b1c24"/>
+      <stop offset="100%" stop-color="#08090c"/>
+    </linearGradient>
+    <linearGradient id="letter" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#6dd5ea"/>
+      <stop offset="100%" stop-color="#2193b0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="32" height="32" rx="9" fill="url(#bg)"/>
+
+  <!-- Subtle top-shine -->
+  <rect width="32" height="15" rx="9" fill="rgba(255,255,255,0.045)"/>
+
+  <!-- Accent gradient border -->
+  <rect x="0.75" y="0.75" width="30.5" height="30.5" rx="8.25"
+        fill="none" stroke="url(#letter)" stroke-width="0.85" stroke-opacity="0.35"/>
+
+  <!-- Italic "A" with gradient -->
+  <text x="16" y="23.5"
+        font-family="Georgia, 'Times New Roman', serif"
+        font-size="21"
+        font-weight="700"
+        font-style="italic"
+        fill="url(#letter)"
+        text-anchor="middle">A</text>
+</svg>

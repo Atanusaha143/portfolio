@@ -36,10 +36,10 @@ const cardPanelBase =
 function ContributionList({ contributions }: { contributions: Project['contributions'] }) {
   return (
     <>
-      {contributions.map((c, i) => {
+      {contributions.map((c) => {
         const Icon = c.icon
         return (
-          <div key={i} className="flex gap-3">
+          <div key={c.title} className="flex gap-3">
             <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[color:var(--color-accent)]/15">
               <Icon className="h-3.5 w-3.5 text-[color:var(--color-accent)]" aria-hidden="true" />
             </div>
@@ -74,6 +74,7 @@ function ProjectCard({ project }: { project: Project }) {
       >
         {/* ── Front face — fills grid cell height ── */}
         <div
+          aria-hidden={flipped}
           className={`flex h-full min-h-[280px] flex-col ${cardPanelBase} border-[color:var(--color-border)] transition-[border-color,box-shadow] duration-300 hover:border-[color:var(--color-accent)]/40 hover:shadow-[0_0_32px_-6px_color-mix(in_oklab,var(--color-accent)_22%,transparent)]`}
           style={{
             backfaceVisibility: 'hidden',
@@ -110,18 +111,25 @@ function ProjectCard({ project }: { project: Project }) {
             ) : (
               <span />
             )}
-            <button
-              onClick={() => setFlipped(true)}
-              aria-label={`Show my work on ${project.title}`}
-              className="flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center rounded-full border border-[color:var(--color-accent)]/30 bg-[color:var(--color-accent)]/10 text-[color:var(--color-accent)] shadow-[0_0_14px_color-mix(in_oklab,var(--color-accent)_18%,transparent)] transition-all duration-200 hover:scale-110 hover:border-[color:var(--color-accent)]/60 hover:bg-[color:var(--color-accent)]/20 hover:shadow-[0_0_20px_color-mix(in_oklab,var(--color-accent)_30%,transparent)] active:scale-95"
-            >
-              <IoInformationCircleOutline className="h-5 w-5" aria-hidden="true" />
-            </button>
+            <div className="flex items-center gap-2">
+              <span className="text-[11px] text-zinc-500 select-none">
+                flip for details
+              </span>
+              <button
+                onClick={() => setFlipped(true)}
+                aria-label={`Show my contributions on ${project.title}`}
+                title={`Show my contributions on ${project.title}`}
+                className="flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center rounded-full border border-[color:var(--color-accent)]/30 bg-[color:var(--color-accent)]/10 text-[color:var(--color-accent)] shadow-[0_0_14px_color-mix(in_oklab,var(--color-accent)_18%,transparent)] transition-all duration-200 hover:scale-110 hover:border-[color:var(--color-accent)]/60 hover:bg-[color:var(--color-accent)]/20 hover:shadow-[0_0_20px_color-mix(in_oklab,var(--color-accent)_30%,transparent)] active:scale-95"
+              >
+                <IoInformationCircleOutline className="h-5 w-5" aria-hidden="true" />
+              </button>
+            </div>
           </div>
         </div>
 
         {/* ── Back face — fills the front face height; scrolls if content overflows ── */}
         <div
+          aria-hidden={!flipped}
           className={`absolute inset-0 flex flex-col overflow-hidden ${cardPanelBase} border-[color:var(--color-accent)]/30`}
           style={{
             backfaceVisibility: 'hidden',
