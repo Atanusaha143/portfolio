@@ -21,8 +21,8 @@ A modern, responsive personal portfolio site built with React, TypeScript, and T
 
 ## Features
 
-- **About** - Bio, role, location, and social links (LinkedIn, GitHub, Google Scholar, ResearchGate, ICPC)
-- **Resume** - Work experience, education, and skills
+- **About** - Bio, role, location, and social links (LinkedIn, GitHub, Medium, Google Scholar, ResearchGate, ICPC)
+- **Resume** - Work experience, education, certifications, and skills
 - **Projects** - Detailed cards for professional and personal projects with tech stack and contributions
 - **Achievements** - Competitive programming awards and academic recognitions
 - **Publications** - Research papers indexed on Google Scholar and ResearchGate

@@ -12,7 +12,7 @@ import {
   IoPersonOutline,
   IoTrophyOutline,
 } from 'react-icons/io5'
-import { SiGooglescholar, SiResearchgate } from 'react-icons/si'
+import { SiGooglescholar, SiMedium, SiResearchgate } from 'react-icons/si'
 import avatarUrl from '@/assets/avatar.jpg'
 
 export type Social = {
@@ -44,14 +44,14 @@ export const profile: Profile = {
     href: 'https://www.aiub.edu/',
   },
   company: {
-    name: 'Cefalo Bangladesh Ltd',
+    name: 'Cefalo Bangladesh Ltd.',
     href: 'https://www.cefalo.com/en/',
   },
   avatar: avatarUrl,
   bio: [
-    'Backend-focused Software Engineer at Cefalo Bangladesh Ltd. with 2.5+ years of experience. I specialize in Python microservices (FastAPI, FastStream), event-driven architecture over NATS, and cloud infrastructure on GCP & AWS - with a growing focus on GenAI, RAG pipelines, and LLM-powered systems.',
-    'BSc in CSE from AIUB with a strong academic record, published researcher on Google Scholar & ResearchGate, and a competitive programming instructor and contest judge.',
-    'Former ICPC contestant, competitive programming mentor to 100+ students. I enjoy digging into system bottlenecks, reading about distributed systems, and translating research ideas into working code.',
+    'Backend-focused Software Engineer at Cefalo Bangladesh Ltd. with 3+ years of experience. I specialize in event-driven Python microservices (FastAPI, FastStream) over NATS and PostgreSQL, Stripe and Adyen integrations, and cloud infrastructure on GCP & AWS.',
+    "Claude Certified Architect – Foundations and a daily Claude Code user, making large async FastAPI codebases AI-navigable through task-specific skills, specialized subagents, and enforced conventions. Co-author and co-facilitator of Cefalo's internal Claude Certified Architect workshop series.",
+    'BSc in CSE from AIUB (Summa Cum Laude, Gold Medal), published researcher on Google Scholar & ResearchGate, and ICPC Asia West Continent Finalist. Competitive programming mentor to 100+ students. I enjoy digging into system bottlenecks and reading about distributed systems.',
   ],
   socials: [
     {
@@ -65,6 +65,12 @@ export const profile: Profile = {
       label: 'GitHub',
       href: 'https://github.com/Atanusaha143',
       icon: BsGithub,
+    },
+    {
+      name: 'Medium',
+      label: 'Medium',
+      href: 'https://medium.com/@atanu.saha415',
+      icon: SiMedium,
     },
     {
       name: 'GoogleScholar',

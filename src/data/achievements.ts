@@ -60,10 +60,10 @@ export const academicHonors: AchievementEntry[] = [
   },
   {
     icon: IoLibraryOutline,
-    title: 'Merit-Based Academic Scholarship',
-    date: '2019 — 2021',
+    title: 'Fully Funded Academic Scholarship',
+    date: '2019 - 2021',
     description:
-      '~70% tuition scholarship awarded from the 4th semester through the final semester at American International University-Bangladesh for sustained outstanding academic performance.',
+      'Fully funded academic scholarship awarded from the 4th semester through the final semester at American International University-Bangladesh for sustained outstanding academic performance.',
     badge: 'Scholarship',
   },
   {
@@ -79,21 +79,22 @@ export const academicHonors: AchievementEntry[] = [
 export const competitiveProgramming: AchievementEntry[] = [
   {
     icon: IoFlagOutline,
-    title: 'Finalist — ICPC Asia West Continent Final',
-    date: '2023',
+    title: 'Finalist - ICPC Asia West Continent Final 2022',
+    date: 'May 2023',
     description:
-      'Advanced to the Asia West Continent Final — one of the most prestigious stages of the International Collegiate Programming Contest - representing AIUB with Team AIUB Singularity. Competed among the top teams across South and Southeast Asia.',
+      'Advanced to the Asia West Continent Final - one of the most prestigious stages of the International Collegiate Programming Contest - representing AIUB with Team AIUB Singularity and earning an Honorable Mention. Competed among the top teams across South and West Asia.',
+    badge: 'Honorable Mention',
   },
   {
     icon: IoTrophyOutline,
-    title: '11th Place — ICPC Asia Dhaka Regional',
+    title: '11th Place - ICPC Asia Dhaka Regional',
     date: '2022',
     description:
       'Secured 11th place in the ICPC Asia Dhaka Regional onsite contest with Team AIUB Singularity, qualifying for the Asia West Continent Final. Competed against hundreds of teams from universities across Bangladesh.',
   },
   {
     icon: IoRibbonOutline,
-    title: '18th Place — ICPC Asia Dhaka Regional Preliminary',
+    title: '18th Place - ICPC Asia Dhaka Regional Preliminary',
     date: '2021',
     description:
       'Ranked 18th in the ICPC Asia Dhaka Regional Online Preliminary with Team AIUB Convergents, securing a berth to the onsite regional round from a highly competitive national field.',
@@ -103,19 +104,19 @@ export const competitiveProgramming: AchievementEntry[] = [
     title: 'Inter-University Programming Contests',
     date: '2022 - 2023',
     description:
-      'Participated in numerous onsite inter-university programming contests across Bangladesh, representing AIUB in national collegiate level competitions in BUET, RUET, SUST etc.',
+      'Participated in numerous onsite inter-university programming contests across Bangladesh, representing AIUB in national collegiate level competitions hosted by BUET, RUET, SUST and AUST.',
   },
   {
     icon: IoGlobeOutline,
     title: 'Google & Meta Algorithmic Contests',
-    date: '2020 — 2023',
+    date: '2020 - 2023',
     description:
       'Competed in globally prestigious algorithmic contests - Google Code Jam, Google Kickstart and Meta (Facebook) Hacker Cup - advancing past qualification rounds.',
   },
   {
     icon: IoCheckmarkDoneOutline,
     title: '3000+ Problems Solved Across Online Judges',
-    date: '2018 — 2023',
+    date: '2018 - 2023',
     description:
       'Solved 3000+ problems on platforms including Codeforces, CodeChef, UVa Online Judge, LightOJ and SPOJ.',
   },
