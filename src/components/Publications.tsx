@@ -1,3 +1,4 @@
+import { Fragment } from 'react'
 import { publications, type Publication } from '@/data/publications'
 import { Card } from '@/components/ui/card'
 import { IoBookOutline, IoOpenOutline } from 'react-icons/io5'
@@ -56,8 +57,12 @@ function PublicationCard({ pub }: { pub: Publication }) {
             </span>
             <div className="flex flex-wrap items-center gap-x-1.5 gap-y-0.5 font-mono text-[10.5px] text-zinc-500 sm:text-[11.5px]">
               <span>{pub.venue}</span>
-              <span aria-hidden="true">&middot;</span>
-              <span>{pub.date}</span>
+              {pub.date.split(' · ').map((part) => (
+                <Fragment key={part}>
+                  <span aria-hidden="true">&middot;</span>
+                  <span className="whitespace-nowrap">{part}</span>
+                </Fragment>
+              ))}
             </div>
           </div>
         </div>

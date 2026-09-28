@@ -29,7 +29,7 @@ export const education: EducationEntry[] = [
     endDate: 'December 2021',
     stats: [
       { icon: IoStar, label: 'CGPA 3.98 / 4.00', tone: 'gold' },
-      { icon: IoMedal, label: 'Summa Cum Laude — Gold Medal', tone: 'gold' },
+      { icon: IoMedal, label: 'Summa Cum Laude - Gold Medal', tone: 'gold' },
     ],
     bullets: [
       'Maintained 3.89–4.00 GPA across all semesters, including six perfect 4.00 semesters.',

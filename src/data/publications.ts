@@ -13,7 +13,7 @@ export const publications: Publication[] = [
     title: 'A Comparative Analysis on Fake News Detection Methods',
     conference: "International Conference on Computing Advancements (ICCA)",
     venue: 'ACM Digital Library',
-    date: 'March 2022',
+    date: 'Presented Mar 2022 · Published Aug 2022',
     highlights: [
       'Conducted a comprehensive review and comparative analysis of various fake news detection techniques, including propagation path classification, geometric deep learning, multiple feature-based approaches, and unsupervised learning.',
       'Analyzed datasets such as LIAR, BuzzFeed, Weibo, and Twitter, evaluating models like RNN, CNN, GNN, and machine learning classifiers (SVM, KNN, LSTM).',

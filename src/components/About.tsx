@@ -5,18 +5,16 @@ import { Card } from '@/components/ui/card'
 // ── Bio keyword highlights ────────────────────────────────────────────────────
 
 const HIGHLIGHT_TERMS = [
-  'event-driven architecture',
+  'Claude Certified Architect',
+  'Claude Code',
   'cloud infrastructure',
-  'RAG pipelines',
-  'LLM-powered systems',
   'FastAPI',
   'FastStream',
   'NATS',
+  'Stripe',
+  'Adyen',
   'GCP',
   'AWS',
-  'GenAI',
-  'RAG',
-  'LLM',
   'ICPC',
   'Python',
   'Google Scholar',

@@ -1,11 +1,16 @@
 import type { ComponentType, ReactNode, SVGProps } from 'react'
-import { IoLocationOutline } from 'react-icons/io5'
+import {
+  IoLocationOutline,
+  IoOpenOutline,
+  IoRibbonOutline,
+} from 'react-icons/io5'
 import {
   experienceCategories,
   type ExperienceEntry,
   type ResumeSectionKey,
 } from '@/data/resume'
 import { education, type EducationEntry } from '@/data/education'
+import { certifications, type Certification } from '@/data/certifications'
 import { skills, type Proficiency, type SkillCategory } from '@/data/skills'
 import { Card } from '@/components/ui/card'
 import { Separator } from '@/components/ui/separator'
@@ -213,7 +218,7 @@ function EducationEntryCard({ entry }: { entry: EducationEntry }) {
           </p>
         </div>
         <span className="shrink-0 font-mono text-[12px] text-[color:var(--color-accent)] sm:text-right">
-          {entry.startDate} — {entry.endDate}
+          {entry.startDate} - {entry.endDate}
         </span>
       </div>
 
@@ -295,6 +300,131 @@ function EducationSection() {
         <div className="flex flex-col gap-3">
           {education.map((entry) => (
             <EducationEntryCard key={entry.institution} entry={entry} />
+          ))}
+        </div>
+      )}
+    </section>
+  )
+}
+
+// ---------- Certifications ----------
+
+function CredentialLink({
+  href,
+  className,
+}: {
+  href: string
+  className?: string
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={cn(
+        'inline-flex shrink-0 items-center gap-1.5 text-[12.5px] font-semibold text-[color:var(--color-accent)] transition-opacity duration-150 hover:opacity-80 hover:underline',
+        className,
+      )}
+    >
+      View credential
+      <IoOpenOutline className="h-3.5 w-3.5" aria-hidden="true" />
+    </a>
+  )
+}
+
+function FeaturedCertificationCard({ cert }: { cert: Certification }) {
+  return (
+    <Card className="relative overflow-hidden border-[color:var(--color-accent)]/30 bg-gradient-to-br from-[color-mix(in_oklab,var(--color-accent)_8%,transparent)] via-transparent to-transparent p-5 shadow-[0_0_48px_-10px_color-mix(in_oklab,var(--color-accent)_28%,transparent)] transition-all duration-300 ease-out hover:border-[color:var(--color-accent)]/50 hover:shadow-[0_0_56px_-8px_color-mix(in_oklab,var(--color-accent)_36%,transparent)] lg:p-7">
+      {/* Decorative glow orb */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-12 -top-12 h-48 w-48 rounded-full bg-[color-mix(in_oklab,var(--color-accent)_12%,transparent)] blur-3xl"
+      />
+      <div className="relative flex flex-col gap-3">
+        <div className="flex items-start gap-3 sm:gap-4">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[color:var(--color-accent)]/30 bg-[color:var(--color-accent)]/10">
+            <IoRibbonOutline
+              aria-hidden="true"
+              className="h-5 w-5 text-[color:var(--color-accent)]"
+            />
+          </div>
+          <div className="min-w-0">
+            <h3 className="text-lg font-extrabold leading-tight tracking-tight text-white lg:text-xl">
+              {cert.title}
+            </h3>
+            <p className="mt-1 text-[13px] font-semibold text-[color:var(--color-accent)]">
+              {cert.issuer}
+            </p>
+          </div>
+        </div>
+        <span className="flex flex-wrap gap-x-1.5 font-mono text-[12px] text-zinc-400">
+          <span className="whitespace-nowrap">Issued {cert.issued}</span>
+          {cert.expires && (
+            <>
+              <span aria-hidden="true">&middot;</span>
+              <span className="whitespace-nowrap">Expires {cert.expires}</span>
+            </>
+          )}
+        </span>
+        {cert.description && (
+          <p className="max-w-2xl text-[13.5px] leading-[1.7] text-zinc-300">
+            {cert.description}
+          </p>
+        )}
+        <CredentialLink href={cert.url} className="self-start" />
+      </div>
+    </Card>
+  )
+}
+
+function CertificationRow({ cert }: { cert: Certification }) {
+  return (
+    <Card className="flex flex-col gap-3 p-4 transition-all duration-300 ease-out hover:border-[color:var(--color-accent)]/40 hover:shadow-[0_0_32px_-6px_color-mix(in_oklab,var(--color-accent)_22%,transparent)] sm:flex-row sm:items-center sm:justify-between sm:gap-4 lg:px-5">
+      <div className="flex min-w-0 items-start gap-3">
+        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-[color:var(--color-border)] bg-zinc-800/60">
+          <IoRibbonOutline
+            aria-hidden="true"
+            className="h-4 w-4 text-[color:var(--color-accent)]"
+          />
+        </div>
+        <div className="min-w-0">
+          <h4 className="text-[14.5px] font-bold leading-snug text-white">
+            {cert.title}
+          </h4>
+          <p className="mt-0.5 flex flex-wrap items-center gap-x-1.5 text-[12.5px] text-zinc-400">
+            <span>{cert.issuer}</span>
+            <span aria-hidden="true">&middot;</span>
+            <span className="font-mono text-[11.5px] text-[color:var(--color-accent)]">
+              {cert.issued}
+            </span>
+          </p>
+        </div>
+      </div>
+      <CredentialLink href={cert.url} className="self-start pl-12 sm:self-auto sm:pl-0" />
+    </Card>
+  )
+}
+
+function CertificationsSection() {
+  const count = certifications.length
+  const featured = certifications.filter((c) => c.featured)
+  const rest = certifications.filter((c) => !c.featured)
+
+  return (
+    <section>
+      <SectionHeader
+        title="Certifications"
+        meta={`${count} ${count === 1 ? 'certification' : 'certifications'}`}
+      />
+      {count === 0 ? (
+        <EmptySectionNotice>Certifications coming soon.</EmptySectionNotice>
+      ) : (
+        <div className="flex flex-col gap-3">
+          {featured.map((cert) => (
+            <FeaturedCertificationCard key={cert.url} cert={cert} />
+          ))}
+          {rest.map((cert) => (
+            <CertificationRow key={cert.url} cert={cert} />
           ))}
         </div>
       )}
@@ -421,6 +551,7 @@ export default function Resume({ activeSection = 'experience' }: ResumeProps) {
     <div>
       {activeSection === 'experience' && <ExperienceSection />}
       {activeSection === 'education' && <EducationSection />}
+      {activeSection === 'certifications' && <CertificationsSection />}
       {activeSection === 'skills' && <SkillsSection />}
     </div>
   )

@@ -6,6 +6,7 @@ import {
   IoServerOutline,
   IoSearchOutline,
   IoCloudOutline,
+  IoCardOutline,
 } from 'react-icons/io5'
 
 export type ProjectContribution = {
@@ -32,8 +33,18 @@ export const projects: Project[] = [
     id: 'ticketco',
     title: 'TicketCo',
     description:
-      'A digital ticketing platform that simplifies event management for organizers by offering intelligent upselling while keeping operational costs in check. With a seamless checkout process, it enhances the purchasing experience for attendees. TicketCo serves teams in ticketing, marketing, and commercial sectors, helping them boost ticket sales, elevate fan experiences, and create new revenue streams, providing comprehensive ticketing support.',
-    tech: ['Python', 'FastAPI', 'FastStream', 'NATS', 'PostgreSQL', 'GCP', 'AWS'],
+      'Norwegian digital ticketing platform (est. 2013) serving 4,400+ organizers and 149,000+ events, with over €500M in processed sales. I work on the API-driven Checkout behind TicketCo Flex and Flow, which lets clients embed a fully branded purchase journey into their own website or app: an async, event-driven system where a FastAPI + PostgreSQL API publishes domain events over NATS to background services.',
+    tech: [
+      'Python',
+      'FastAPI',
+      'FastStream',
+      'NATS',
+      'PostgreSQL',
+      'Stripe',
+      'Adyen',
+      'GCP',
+      'AWS',
+    ],
     link: {
       href: 'https://ticketco.io',
       label: 'View Project',
@@ -44,19 +55,25 @@ export const projects: Project[] = [
         icon: IoLayersOutline,
         title: 'Microservices Architecture',
         description:
-          'Architected event-driven system using FastAPI, FastStream and NATS for asynchronous communication across checkout, booking, payment and notification services, enabling scalable ticket processing for high-traffic events',
+          'Architected event-driven services with FastAPI, FastStream and NATS across checkout, booking, payment and notification flows, sustaining ~87K requests/day at ~62ms average response time',
+      },
+      {
+        icon: IoCardOutline,
+        title: 'Payments',
+        description:
+          'Built Stripe and Adyen payment and refund workflows with HMAC-validated webhooks and split payments via Adyen for Platforms',
       },
       {
         icon: IoSpeedometerOutline,
-        title: 'Performance Optimization',
+        title: 'Performance & Reliability',
         description:
-          'Reduced system latency by 99.94% through strategic NATS connection pooling and configuration tuning. Optimized refund API from ~2.5s to ~700ms, improving customer experience during peak booking periods',
+          'Cut NATS publish spikes from 0.13–254s to 30–40ms and refund p95 from ~2.5s to ~700ms; rebuilt a background service onto one event loop for ~38% lower peak memory',
       },
       {
         icon: IoFlaskOutline,
         title: 'Testing & CI/CD',
         description:
-          'Achieved 85%+ test coverage using PyTest and Cucumber BDD, integrated into GitHub Actions pipeline for continuous validation',
+          '2000+ pytest tests with branch coverage, plus ~85%+ coverage with Cucumber BDD, gated in GitHub Actions on every pull request',
       },
     ],
   },
